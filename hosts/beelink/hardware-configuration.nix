@@ -36,23 +36,23 @@
 
   swapDevices = [ ];
 
-  fileSystems."/storage" =
-    {
-      device = "//192.168.0.3/storage";
-      fsType = "cifs";
-      options = let
-        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-      in ["${automount_opts},mfsymlinks,uid=1000,gid=100,credentials=/home/matthias/smb"];
-    };
-
-  fileSystems."/media" =
-    {
-      device = "//192.168.0.3/media";
-      fsType = "cifs";
-      options = let
-        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-      in ["${automount_opts},mfsymlinks,uid=1000,gid=100,credentials=/home/matthias/smb"];
-    };
+#  fileSystems."/storage" =
+#    {
+#      device = "//192.168.0.3/storage";
+#      fsType = "cifs";
+#      options = let
+#        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+#      in ["${automount_opts},mfsymlinks,uid=1000,gid=100,credentials=/home/startung/smb"];
+#    };
+#
+#  fileSystems."/media" =
+#    {
+#      device = "//192.168.0.3/media";
+#      fsType = "cifs";
+#      options = let
+#        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+#      in ["${automount_opts},mfsymlinks,uid=1000,gid=100,credentials=/home/startung/smb"];
+#    };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
@@ -94,7 +94,7 @@
       INTERNET_IFACE = "enp1s0";
       WIFI_IFACE = "wlo1";
       SSID = "Spikky";
-      PASSPHRASE = builtins.readFile /home/matthias/hotspot;
+      PASSPHRASE = builtins.readFile /home/startung/hotspot;
     };
   };
 }
